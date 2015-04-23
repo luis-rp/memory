@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MemoryApp</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_new_user">NewUser</string>
+    <string name="title_activity_configuration">Configuration</string>
+    <string name="passwordError">El password no conincide</string>
+    <string-array name="spinnerPresentation">
+        <item>Directo</item>
+        <item>Inverso</item>
+        <item>Alterno</item>
+        <item>Aleatorio</item>
+    </string-array>
+</resources>
