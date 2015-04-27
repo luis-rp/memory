@@ -23,8 +23,21 @@ public class NewUser extends ActionBarActivity {
 
         Button btnConfiguration = (Button) findViewById(R.id.button4);
         btnConfiguration.setOnClickListener(BotonListener);
-    }
 
+        //return home view
+        Button btnReturnHome = (Button) findViewById(R.id.button3);
+        btnReturnHome.setOnClickListener(BotonListenerReturnHome);
+
+    }
+    private OnClickListener BotonListenerReturnHome = new OnClickListener(){
+
+        public void onClick(View view) {
+
+                Intent i = new Intent(view.getContext(), MainActivity.class);
+                startActivity(i);
+
+        }
+    };
     private OnClickListener BotonListener = new OnClickListener(){
 
         public void onClick(View view) {
