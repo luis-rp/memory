@@ -13,4 +13,8 @@
         <item>Alterno</item>
         <item>Aleatorio</item>
     </string-array>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Spanish</item>
+    </string-array>
 </resources>

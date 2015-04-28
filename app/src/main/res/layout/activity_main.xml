@@ -20,18 +20,18 @@
         android:layout_height="wrap_content"
         android:id="@+id/selectUsers"
         android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="109dp" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start"
         android:id="@+id/btnStart"
-        android:layout_below="@+id/selectUsers"
+        android:layout_above="@+id/btnNewUser"
         android:layout_alignLeft="@+id/btnNewUser"
         android:layout_alignStart="@+id/btnNewUser"
-        android:layout_marginTop="54dp" />
+        android:layout_marginBottom="65dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -41,4 +41,27 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="72dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:ems="10"
+        android:id="@+id/editText4"
+        android:layout_below="@+id/selectUsers"
+        android:layout_alignLeft="@+id/editText5"
+        android:layout_alignStart="@+id/editText5"
+        android:layout_marginTop="35dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editText5"
+        android:layout_marginTop="44dp"
+        android:layout_below="@+id/editText4"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
