@@ -24,6 +24,10 @@
             android:name=".Configuration"
             android:label="@string/title_activity_configuration" >
         </activity>
+        <activity
+            android:name=".MuduleSection"
+            android:label="@string/title_activity_mudule_section" >
+        </activity>
     </application>
 
 </manifest>

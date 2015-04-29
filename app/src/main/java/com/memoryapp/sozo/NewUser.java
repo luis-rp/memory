@@ -57,39 +57,57 @@ public class NewUser extends ActionBarActivity {
             EditText et = (EditText) findViewById(R.id.editText);
             EditText et2 = (EditText) findViewById(R.id.editText2);
             EditText et3 = (EditText) findViewById(R.id.editText3);
-            if(!et2.getText().toString().equals(et3.getText().toString())){
-                Toast.makeText(view.getContext(),R.string.passwordError,Toast.LENGTH_SHORT).show();
-            }else {
+            SQLiteDatabase mydatabase = openOrCreateDatabase("DBUsuarios", MODE_PRIVATE, null);
+            //exist user
+            boolean condision = true;
+            String errors="";
+            Cursor resultSet = mydatabase.rawQuery("Select * from user WHERE name = ? ", new String[]{et.getText().toString()});
+            boolean exist = resultSet.moveToFirst();
+            if (!et2.getText().toString().equals(et3.getText().toString())) {
+                errors += "Error no coinciden los passwords ";
+                condision = false;
+            }
+            if (exist) {
+                errors += "- El nombre de usuario ya existe";
+                condision = false;
+            }
+            if (et.getText().toString()== "") {
+                errors += "- El nombre de usuario este blanco";
+                condision = false;
+            }
+            if (et2.getText().toString() == "") {
+                errors += "- El password este blanco";
+                condision = false;
+            }
+
+            if (condision) {
 
                 SharedPreferences newUser = getSharedPreferences("newUserData", 0);
                 SharedPreferences.Editor editNewUser = newUser.edit();
-                editNewUser.putString("newUser",et.getText().toString());
-                editNewUser.putString("newPassword",et2.getText().toString());
-                editNewUser.commit();
+                editNewUser.putString("newUser", et.getText().toString());
+                editNewUser.putString("newPassword", et2.getText().toString());
+
 
                 //sqLite
                 SQLiteDatabase db = usdbh.getWritableDatabase();
-                db.execSQL("INSERT INTO user (name,password,language,presentation,sound,time) VALUES ('"+et.getText().toString()+"', '"+et2.getText().toString()+"','spanish','directo','1','45')");
+                db.execSQL("INSERT INTO user (name,password,language,presentation,sound,time) VALUES ('" + et.getText().toString() + "', '" + et2.getText().toString() + "','spanish','directo','1','45')");
 
 
-                SQLiteDatabase mydatabase = openOrCreateDatabase("DBUsuarios",MODE_PRIVATE,null);
-                Cursor resultSet = mydatabase.rawQuery("Select * from user",null);
-                resultSet.moveToFirst();
-                String username = resultSet.getString(1);
-
-                while (resultSet.moveToNext()) {
-                    Log.d("sqlite", "valor id  "+resultSet.getString(0));
-                    Log.d("sqlite", "valor name  "+resultSet.getString(1));
-                    Log.d("sqlite", "valor password  "+resultSet.getString(2));
-                }
+                mydatabase = openOrCreateDatabase("DBUsuarios", MODE_PRIVATE, null);
+                Cursor idresultSet = mydatabase.rawQuery("Select * from user WHERE name = ? AND password = ?", new String[]{et.getText().toString(), et2.getText().toString()});
+                idresultSet.moveToFirst();
+                String idusername = idresultSet.getString(0);
                 mydatabase.close();
-
-
-
                 //end sqlite
 
                 Intent i = new Intent(view.getContext(), Configuration.class);
+                i.putExtra("key", idusername);
                 startActivity(i);
+
+                editNewUser.putString("iduser", idusername);
+                editNewUser.commit();
+            }else{
+                Toast.makeText(view.getContext(),errors, Toast.LENGTH_SHORT).show();
             }
         }
     };

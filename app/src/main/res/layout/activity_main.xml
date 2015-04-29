@@ -29,9 +29,8 @@
         android:text="Start"
         android:id="@+id/btnStart"
         android:layout_above="@+id/btnNewUser"
-        android:layout_alignLeft="@+id/btnNewUser"
-        android:layout_alignStart="@+id/btnNewUser"
-        android:layout_marginBottom="65dp" />
+        android:layout_alignRight="@+id/btnNewUser"
+        android:layout_alignEnd="@+id/btnNewUser" />
 
     <Button
         android:layout_width="wrap_content"
@@ -46,12 +45,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name"
         android:ems="10"
-        android:id="@+id/editText4"
+        android:id="@+id/loginame"
         android:layout_below="@+id/selectUsers"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_alignStart="@+id/editText5"
+        android:layout_alignLeft="@+id/loginpassword"
+        android:layout_alignStart="@+id/loginpassword"
         android:layout_marginTop="35dp" />
 
     <EditText
@@ -59,9 +57,9 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:id="@+id/editText5"
+        android:id="@+id/loginpassword"
         android:layout_marginTop="44dp"
-        android:layout_below="@+id/editText4"
+        android:layout_below="@+id/loginame"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

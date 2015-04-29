@@ -17,4 +17,5 @@
         <item>English</item>
         <item>Spanish</item>
     </string-array>
+    <string name="title_activity_mudule_section">MuduleSection</string>
 </resources>
