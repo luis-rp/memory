@@ -36,7 +36,7 @@ public class NewUser extends ActionBarActivity {
         //storage
         SharedPreferences newUser = getSharedPreferences("newUserData",0);
         Log.d("storage values", "valor de la variable guardada  "+newUser.getString("newUser",""));
-        usdbh = new UsuariosSQLiteHelper(this, "DBUsuarios", null, 3);
+        usdbh = new UsuariosSQLiteHelper(this, "DBUsers", null,4 );
 
 
 
@@ -57,7 +57,7 @@ public class NewUser extends ActionBarActivity {
             EditText et = (EditText) findViewById(R.id.editText);
             EditText et2 = (EditText) findViewById(R.id.editText2);
             EditText et3 = (EditText) findViewById(R.id.editText3);
-            SQLiteDatabase mydatabase = openOrCreateDatabase("DBUsuarios", MODE_PRIVATE, null);
+            SQLiteDatabase mydatabase = openOrCreateDatabase("DBUsers", MODE_PRIVATE, null);
             //exist user
             boolean condision = true;
             String errors="";
@@ -93,7 +93,7 @@ public class NewUser extends ActionBarActivity {
                 db.execSQL("INSERT INTO user (name,password,language,presentation,sound,time) VALUES ('" + et.getText().toString() + "', '" + et2.getText().toString() + "','spanish','directo','1','45')");
 
 
-                mydatabase = openOrCreateDatabase("DBUsuarios", MODE_PRIVATE, null);
+                mydatabase = openOrCreateDatabase("DBUsers", MODE_PRIVATE, null);
                 Cursor idresultSet = mydatabase.rawQuery("Select * from user WHERE name = ? AND password = ?", new String[]{et.getText().toString(), et2.getText().toString()});
                 idresultSet.moveToFirst();
                 String idusername = idresultSet.getString(0);

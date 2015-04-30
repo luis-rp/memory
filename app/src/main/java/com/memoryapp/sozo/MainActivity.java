@@ -16,11 +16,13 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+    public UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(this, "DBUsers", null, 5);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Button btnNewUser = (Button) findViewById(R.id.btnNewUser);
         btnNewUser.setOnClickListener(BotonListener);
@@ -37,10 +39,11 @@ public class MainActivity extends ActionBarActivity {
             EditText passwordlogin = (EditText) findViewById(R.id.loginpassword);
 
 
+            SQLiteDatabase db = usdbh.getWritableDatabase();
            // Toast.makeText(view.getContext(), "dsa", Toast.LENGTH_SHORT).show();
 
 
-            SQLiteDatabase mydatabase = openOrCreateDatabase("DBUsuarios",MODE_PRIVATE,null);
+            SQLiteDatabase mydatabase = openOrCreateDatabase("DBUsers",MODE_PRIVATE,null);
             Cursor resultSet = mydatabase.rawQuery("Select * from user WHERE name = ? AND password = ?",new String[] {userlogin.getText().toString(),passwordlogin.getText().toString()});
             //Cursor resultSet = mydatabase.rawQuery("Select * from user WHERE iduser=?", new String[]{"23"});
             boolean found = resultSet.moveToFirst();
